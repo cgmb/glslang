@@ -122,6 +122,7 @@ void usage();
 char* ReadUtf8FileData(const char* fileName);
 void FreeFileData(char* data);
 void InfoLogMsg(const char* msg, const char* name, const int num);
+char* Utf8StrDup(const char* str1);
 
 // Globally track if any compile or link failure.
 bool CompileFailed = false;
@@ -984,7 +985,7 @@ void CompileAndLinkShaderFiles(glslang::TWorklist& Worklist)
         ShaderCompUnit compUnit(FindLanguage("stdin"));
         std::istreambuf_iterator<char> begin(std::cin), end;
         std::string tempString(begin, end);
-        char* fileText = strdup(tempString.c_str());
+        char* fileText = Utf8StrDup(tempString.c_str());
         std::string fileName = "stdin";
         compUnit.addString(fileName, fileText);
         compUnits.push_back(compUnit);
@@ -1179,7 +1180,7 @@ void CompileFile(const char* fileName, ShHandle compiler)
     if ((Options & EOptionStdin) != 0) {
         std::istreambuf_iterator<char> begin(std::cin), end;
         std::string tempString(begin, end);
-        shaderString = strdup(tempString.c_str());
+        shaderString = Utf8StrDup(tempString.c_str());
     } else {
         shaderString = ReadUtf8FileData(fileName);
     }
@@ -1421,6 +1422,22 @@ char* ReadUtf8FileData(const char* fileName)
 void FreeFileData(char* data)
 {
     free(data);
+}
+
+void TrimBom(const char*& source, size_t& length) {
+    if (length >= 3 && std::memcmp(source, "\xef\xbb\xbf", 3) == 0) {
+        length -= 3;
+        source += 3;
+    }
+}
+
+//
+//   Discard the BOM if found, then duplicate the rest
+//
+char* Utf8StrDup(const char* str1) {
+  size_t length = strlen(str1);
+  TrimBom(str1, length);
+  return strdup(str1);
 }
 
 void InfoLogMsg(const char* msg, const char* name, const int num)
