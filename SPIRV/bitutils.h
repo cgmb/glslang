@@ -12,8 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LIBSPIRV_UTIL_BITUTILS_H_
-#define LIBSPIRV_UTIL_BITUTILS_H_
+#pragma once
 
 #include <cstdint>
 #include <cstring>
@@ -77,5 +76,3 @@ static_assert(SetBits<uint64_t, 16, 16>::get == uint64_t(0x00000000FFFF0000LL),
               "SetBits failed");
 
 }  // namespace spvutils
-
-#endif  // LIBSPIRV_UTIL_BITUTILS_H_

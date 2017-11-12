@@ -33,8 +33,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef _REFLECTION_INCLUDED
-#define _REFLECTION_INCLUDED
+#pragma once
 
 #include "../Public/ShaderLang.h"
 #include "../Include/Types.h"
@@ -173,5 +172,3 @@ protected:
 };
 
 } // end namespace glslang
-
-#endif // _REFLECTION_INCLUDED

@@ -31,8 +31,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-#ifndef __INITIALIZEDLL_H
-#define __INITIALIZEDLL_H
+#pragma once
 
 #include "../glslang/OSDependent/osinclude.h"
 
@@ -44,6 +43,3 @@ bool DetachThread();
 bool DetachProcess();
 
 } // end namespace glslang
-
-#endif // __INITIALIZEDLL_H
-

@@ -38,8 +38,7 @@
 // sits between the preprocessor scanner and HLSL parser.
 //
 
-#ifndef HLSLSCANCONTEXT_H_
-#define HLSLSCANCONTEXT_H_
+#pragma once
 
 #include "../glslang/MachineIndependent/ParseHelper.h"
 #include "hlslTokens.h"
@@ -105,5 +104,3 @@ protected:
 };
 
 } // end namespace glslang
-
-#endif // HLSLSCANCONTEXT_H_

@@ -37,8 +37,7 @@
 //
 
 #pragma once
-#ifndef disassembler_H
-#define disassembler_H
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -48,5 +47,3 @@ namespace spv {
     void Disassemble(std::ostream& out, const std::vector<unsigned int>&);
 
 };  // end namespace spv
-
-#endif // disassembler_H

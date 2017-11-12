@@ -32,8 +32,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef _STAND_ALONE_RESOURCE_LIMITS_INCLUDED_
-#define _STAND_ALONE_RESOURCE_LIMITS_INCLUDED_
+#pragma once
 
 #include <string>
 
@@ -53,5 +52,3 @@ std::string GetDefaultTBuiltInResourceString();
 void DecodeResourceLimits(TBuiltInResource* resources, char* config);
 
 }  // end namespace glslang
-
-#endif  // _STAND_ALONE_RESOURCE_LIMITS_INCLUDED_

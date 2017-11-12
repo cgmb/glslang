@@ -33,8 +33,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef SPIRVREMAPPER_H
-#define SPIRVREMAPPER_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -301,4 +300,3 @@ private:
 } // namespace SPV
 
 #endif // defined (use_cpp11)
-#endif // SPIRVREMAPPER_H

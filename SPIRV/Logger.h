@@ -32,8 +32,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef GLSLANG_SPIRV_LOGGER_H
-#define GLSLANG_SPIRV_LOGGER_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -70,5 +69,3 @@ private:
 };
 
 } // end spv namespace
-
-#endif // GLSLANG_SPIRV_LOGGER_H

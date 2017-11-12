@@ -24,8 +24,7 @@
 ** IN THE MATERIALS.
 */
 
-#ifndef GLSLextNV_H
-#define GLSLextNV_H
+#pragma once
 
 enum BuiltIn;
 enum Decoration;
@@ -50,5 +49,3 @@ const char* const E_SPV_NV_stereo_view_rendering = "SPV_NV_stereo_view_rendering
 
 //SPV_NVX_multiview_per_view_attributes
 const char* const E_SPV_NVX_multiview_per_view_attributes = "SPV_NVX_multiview_per_view_attributes";
-
-#endif  // #ifndef GLSLextNV_H

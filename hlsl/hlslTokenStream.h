@@ -33,8 +33,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef HLSLTOKENSTREAM_H_
-#define HLSLTOKENSTREAM_H_
+#pragma once
 
 #include "hlslScanContext.h"
 
@@ -92,5 +91,3 @@ namespace glslang {
     };
 
 } // end namespace glslang
-
-#endif // HLSLTOKENSTREAM_H_

@@ -75,8 +75,7 @@ TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, EVEN IF
 NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 \****************************************************************************/
 
-#ifndef PARSER_H
-#define PARSER_H
+#pragma once
 
 namespace glslang {
 
@@ -177,5 +176,3 @@ enum EFixedAtoms {
 };
 
 } // end namespace glslang
-
-#endif /* not PARSER_H */

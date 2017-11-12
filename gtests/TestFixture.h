@@ -32,8 +32,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef GLSLANG_GTESTS_TEST_FIXTURE_H
-#define GLSLANG_GTESTS_TEST_FIXTURE_H
+#pragma once
 
 #include <cstdint>
 #include <fstream>
@@ -610,5 +609,3 @@ private:
 };
 
 }  // namespace glslangtest
-
-#endif  // GLSLANG_GTESTS_TEST_FIXTURE_H

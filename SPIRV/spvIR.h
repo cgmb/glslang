@@ -43,8 +43,7 @@
 //
 
 #pragma once
-#ifndef spvIR_H
-#define spvIR_H
+#pragma once
 
 #include "spirv.hpp"
 
@@ -406,5 +405,3 @@ __inline void Block::addInstruction(std::unique_ptr<Instruction> inst)
 }
 
 };  // end spv namespace
-
-#endif // spvIR_H

@@ -33,8 +33,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef HLSLOPMAP_H_
-#define HLSLOPMAP_H_
+#pragma once
 
 #include "hlslScanContext.h"
 
@@ -65,5 +64,3 @@ namespace glslang {
     };
 
 } // end namespace glslang
-
-#endif // HLSLOPMAP_H_

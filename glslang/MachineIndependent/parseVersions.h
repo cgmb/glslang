@@ -35,8 +35,7 @@
 
 // This is implemented in Versions.cpp
 
-#ifndef _PARSE_VERSIONS_INCLUDED_
-#define _PARSE_VERSIONS_INCLUDED_
+#pragma once
 
 #include "../Public/ShaderLang.h"
 #include "../Include/InfoSink.h"
@@ -136,5 +135,3 @@ private:
 };
 
 } // end namespace glslang
-
-#endif // _PARSE_VERSIONS_INCLUDED_

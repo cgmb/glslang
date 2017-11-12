@@ -33,8 +33,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef _LOCAL_INTERMEDIATE_INCLUDED_
-#define _LOCAL_INTERMEDIATE_INCLUDED_
+#pragma once
 
 #include "../Include/intermediate.h"
 #include "../Public/ShaderLang.h"
@@ -714,5 +713,3 @@ private:
 };
 
 } // end namespace glslang
-
-#endif // _LOCAL_INTERMEDIATE_INCLUDED_

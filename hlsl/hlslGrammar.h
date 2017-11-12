@@ -34,8 +34,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef HLSLGRAMMAR_H_
-#define HLSLGRAMMAR_H_
+#pragma once
 
 #include "hlslParseHelper.h"
 #include "hlslOpMap.h"
@@ -136,5 +135,3 @@ namespace glslang {
     };
 
 } // end namespace glslang
-
-#endif // HLSLGRAMMAR_H_

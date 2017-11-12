@@ -34,8 +34,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef EHLSLTOKENS_H_
-#define EHLSLTOKENS_H_
+#pragma once
 
 namespace glslang {
 
@@ -367,5 +366,3 @@ enum EHlslTokenClass {
 };
 
 } // end namespace glslang
-
-#endif // EHLSLTOKENS_H_

@@ -33,8 +33,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-#ifndef HLSL_PARSE_INCLUDED_
-#define HLSL_PARSE_INCLUDED_
+#pragma once
 
 #include "../glslang/MachineIndependent/parseVersions.h"
 #include "../glslang/MachineIndependent/ParseHelper.h"
@@ -489,5 +488,3 @@ protected:
 #define BUILTIN_PREFIX "__BI_"
 
 } // end namespace glslang
-
-#endif // HLSL_PARSE_INCLUDED_

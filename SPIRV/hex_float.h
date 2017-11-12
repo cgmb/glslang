@@ -12,8 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef LIBSPIRV_UTIL_HEX_FLOAT_H_
-#define LIBSPIRV_UTIL_HEX_FLOAT_H_
+#pragma once
 
 #include <cassert>
 #include <cctype>
@@ -1074,5 +1073,3 @@ inline std::ostream& operator<<<Float16>(std::ostream& os,
   return os;
 }
 }
-
-#endif  // LIBSPIRV_UTIL_HEX_FLOAT_H_

@@ -34,8 +34,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef _SYMBOL_TABLE_INCLUDED_
-#define _SYMBOL_TABLE_INCLUDED_
+#pragma once
 
 //
 // Symbol table for parsing.  Has these design characteristics:
@@ -821,5 +820,3 @@ protected:
 };
 
 } // end namespace glslang
-
-#endif // _SYMBOL_TABLE_INCLUDED_

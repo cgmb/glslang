@@ -33,8 +33,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef HLSLATTRIBUTES_H_
-#define HLSLATTRIBUTES_H_
+#pragma once
 
 #include <unordered_map>
 #include <functional>
@@ -120,6 +119,3 @@ namespace glslang {
     };
 
 } // end namespace glslang
-
-
-#endif // HLSLATTRIBUTES_H_

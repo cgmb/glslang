@@ -33,8 +33,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-#ifndef _VERSIONS_INCLUDED_
-#define _VERSIONS_INCLUDED_
+#pragma once
 
 //
 // Help manage multiple profiles, versions, extensions etc.
@@ -248,5 +247,3 @@ const char* const AEP_texture_cube_map_array[] = { E_GL_EXT_texture_cube_map_arr
 const int Num_AEP_texture_cube_map_array = sizeof(AEP_texture_cube_map_array)/sizeof(AEP_texture_cube_map_array[0]);
 
 } // end namespace glslang
-
-#endif // _VERSIONS_INCLUDED_

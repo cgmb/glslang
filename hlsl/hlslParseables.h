@@ -33,8 +33,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef _HLSLPARSEABLES_INCLUDED_
-#define _HLSLPARSEABLES_INCLUDED_
+#pragma once
 
 #include "../glslang/MachineIndependent/Initialize.h"
 
@@ -60,5 +59,3 @@ private:
 };
 
 } // end namespace glslang
-
-#endif // _HLSLPARSEABLES_INCLUDED_

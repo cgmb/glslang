@@ -42,8 +42,7 @@
 //
 
 #pragma once
-#ifndef SpvBuilder_H
-#define SpvBuilder_H
+#pragma once
 
 #include "Logger.h"
 #include "spirv.hpp"
@@ -632,5 +631,3 @@ public:
 };  // end Builder class
 
 };  // end spv namespace
-
-#endif // SpvBuilder_H

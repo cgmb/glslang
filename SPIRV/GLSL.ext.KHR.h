@@ -24,8 +24,7 @@
 ** IN THE MATERIALS.
 */
 
-#ifndef GLSLextKHR_H
-#define GLSLextKHR_H
+#pragma once
 
 enum BuiltIn;
 enum Op;
@@ -44,5 +43,3 @@ static const char* const E_SPV_KHR_storage_buffer_storage_class = "SPV_KHR_stora
 static const char* const E_SPV_KHR_post_depth_coverage          = "SPV_KHR_post_depth_coverage";
 static const char* const E_SPV_EXT_shader_stencil_export        = "SPV_EXT_shader_stencil_export";
 static const char* const E_SPV_EXT_shader_viewport_index_layer  = "SPV_EXT_shader_viewport_index_layer";
-
-#endif  // #ifndef GLSLextKHR_H

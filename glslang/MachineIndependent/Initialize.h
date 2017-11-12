@@ -34,8 +34,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef _INITIALIZE_INCLUDED_
-#define _INITIALIZE_INCLUDED_
+#pragma once
 
 #include "../Include/ResourceLimits.h"
 #include "../Include/Common.h"
@@ -108,5 +107,3 @@ protected:
 };
 
 } // end namespace glslang
-
-#endif // _INITIALIZE_INCLUDED_

@@ -32,8 +32,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef GLSLANG_GTESTS_SETTINGS_H
-#define GLSLANG_GTESTS_SETTINGS_H
+#pragma once
 
 #include <string>
 
@@ -54,5 +53,3 @@ struct GTestSettings {
 extern GTestSettings GlobalTestSettings;
 
 }  // namespace glslangtest
-
-#endif  // GLSLANG_GTESTS_SETTINGS_H

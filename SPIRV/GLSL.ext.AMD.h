@@ -24,8 +24,7 @@
 ** IN THE MATERIALS.
 */
 
-#ifndef GLSLextAMD_H
-#define GLSLextAMD_H
+#pragma once
 
 enum BuiltIn;
 enum Capability;
@@ -113,5 +112,3 @@ static const Capability CapabilityFragmentMaskAMD = static_cast<Capability>(5010
 
 static const Op OpFragmentMaskFetchAMD = static_cast<Op>(5011);
 static const Op OpFragmentFetchAMD     = static_cast<Op>(5012);
-
-#endif  // #ifndef GLSLextAMD_H

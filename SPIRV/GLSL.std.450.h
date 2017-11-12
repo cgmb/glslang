@@ -24,8 +24,7 @@
 ** IN THE MATERIALS.
 */
 
-#ifndef GLSLstd450_H
-#define GLSLstd450_H
+#pragma once
 
 static const int GLSLstd450Version = 100;
 static const int GLSLstd450Revision = 1;
@@ -127,5 +126,3 @@ enum GLSLstd450 {
 
     GLSLstd450Count
 };
-
-#endif  // #ifndef GLSLstd450_H

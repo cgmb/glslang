@@ -41,8 +41,7 @@
 //  - TParseContext:      GLSL specific helper
 //
 
-#ifndef _PARSER_HELPER_INCLUDED_
-#define _PARSER_HELPER_INCLUDED_
+#pragma once
 
 #include "parseVersions.h"
 #include "../Include/ShHandle.h"
@@ -486,5 +485,3 @@ protected:
 };
 
 } // end namespace glslang
-
-#endif // _PARSER_HELPER_INCLUDED_

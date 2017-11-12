@@ -75,8 +75,7 @@ TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, EVEN IF
 NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 \****************************************************************************/
 
-#ifndef PPCONTEXT_H
-#define PPCONTEXT_H
+#pragma once
 
 #include <stack>
 #include <unordered_map>
@@ -618,5 +617,3 @@ protected:
 };
 
 } // end namespace glslang
-
-#endif  // PPCONTEXT_H

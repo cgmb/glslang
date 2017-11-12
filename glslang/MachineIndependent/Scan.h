@@ -33,8 +33,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-#ifndef _GLSLANG_SCAN_INCLUDED_
-#define _GLSLANG_SCAN_INCLUDED_
+#pragma once
 
 #include "Versions.h"
 
@@ -270,5 +269,3 @@ protected:
 };
 
 } // end namespace glslang
-
-#endif // _GLSLANG_SCAN_INCLUDED_

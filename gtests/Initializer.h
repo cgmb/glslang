@@ -32,8 +32,7 @@
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef GLSLANG_GTESTS_INITIALIZER_H
-#define GLSLANG_GTESTS_INITIALIZER_H
+#pragma once
 
 #include "glslang/Public/ShaderLang.h"
 
@@ -51,5 +50,3 @@ public:
 };
 
 }  // namespace glslangtest
-
-#endif  // GLSLANG_GTESTS_INITIALIZER_H

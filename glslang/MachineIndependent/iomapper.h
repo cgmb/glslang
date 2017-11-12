@@ -33,8 +33,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef _IOMAPPER_INCLUDED
-#define _IOMAPPER_INCLUDED
+#pragma once
 
 #include "../Public/ShaderLang.h"
 
@@ -59,5 +58,3 @@ public:
 };
 
 } // end namespace glslang
-
-#endif // _IOMAPPER_INCLUDED
