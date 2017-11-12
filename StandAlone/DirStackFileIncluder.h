@@ -122,13 +122,29 @@ protected:
         return nullptr;
     }
 
+    static void trimBom(const char*& source, int& length) {
+      if (length >= 3 && std::equal(source, source + 3, "\xef\xbb\xbf")) {
+         length -= 3;
+         source += 3;
+      }
+    }
+
     // Do actual reading of the file, filling in a new include result.
     virtual IncludeResult* newIncludeResult(const std::string& path, std::ifstream& file, int length) const
     {
+        if (length < 0) {
+            return nullptr;
+        }
         char* content = new tUserDataElement [length];
         file.seekg(0, file.beg);
-        file.read(content, length);
-        return new IncludeResult(path, content, length, content);
+        if (!file.read(content, length)) {
+            delete [] content;
+            return nullptr;
+        }
+        // strip the BOM from the start of the file
+        const char* trimmedContent = content;
+        trimBom(trimmedContent, length);
+        return new IncludeResult(path, trimmedContent, length, content);
     }
 
     // If no path markers, return current working directory.
