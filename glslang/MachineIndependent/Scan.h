@@ -36,6 +36,7 @@
 #ifndef _GLSLANG_SCAN_INCLUDED_
 #define _GLSLANG_SCAN_INCLUDED_
 
+#include <string.h>
 #include "Versions.h"
 
 namespace glslang {
@@ -51,15 +52,18 @@ const int EndOfInput = -1;
 //
 class TInputScanner {
 public:
-    TInputScanner(int n, const char* const s[], size_t L[], const char* const* names = nullptr,
+    TInputScanner(int n, const char* s[], size_t L[], const char* const* names = nullptr,
                   int b = 0, int f = 0, bool single = false) :
         numSources(n),
          // up to this point, common usage is "char*", but now we need positive 8-bit characters
-        sources(reinterpret_cast<const unsigned char* const *>(s)),
+        sources(reinterpret_cast<const unsigned char**>(s)),
         lengths(L), currentSource(0), currentChar(0), stringBias(b), finale(f), singleLogical(single),
         endOfFileReached(false)
     {
         loc = new TSourceLoc[numSources];
+        for (int i = 0; i < numSources; ++i) {
+            trimBom(sources[i], lengths[i]);
+        }
         for (int i = 0; i < numSources; ++i) {
             loc[i].init(i - stringBias);
         }
@@ -245,10 +249,19 @@ protected:
             currentChar = 0;
         }
     }
+private:
+    static void trimBom(const unsigned char*& source, size_t& length) {
+      if (length >= 3 && memcmp(source, "\xef\xbb\xbf", 3) == 0) {
+         length -= 3;
+         source += 3;
+      }
+    }
 
-    int numSources;                      // number of strings in source
-    const unsigned char* const *sources; // array of strings; must be converted to positive values on use, to avoid aliasing with -1 as EndOfInput
-    const size_t *lengths;               // length of each string
+protected:
+
+    int numSources;                // number of strings in source
+    const unsigned char** sources; // array of strings; must be converted to positive values on use, to avoid aliasing with -1 as EndOfInput
+    size_t* lengths;               // length of each string
     int currentSource;
     size_t currentChar;
 
