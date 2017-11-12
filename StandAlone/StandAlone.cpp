@@ -119,7 +119,7 @@ enum TFailCode {
 EShLanguage FindLanguage(const std::string& name, bool parseSuffix=true);
 void CompileFile(const char* fileName, ShHandle);
 void usage();
-char* ReadFileData(const char* fileName);
+char* ReadUtf8FileData(const char* fileName);
 void FreeFileData(char* data);
 void InfoLogMsg(const char* msg, const char* name, const int num);
 
@@ -138,7 +138,7 @@ void ProcessConfigFile()
     if (ConfigFile.size() == 0)
         Resources = glslang::DefaultTBuiltInResource;
     else {
-        char* configString = ReadFileData(ConfigFile.c_str());
+        char* configString = ReadUtf8FileData(ConfigFile.c_str());
         glslang::DecodeResourceLimits(&Resources,  configString);
         FreeFileData(configString);
     }
@@ -997,7 +997,7 @@ void CompileAndLinkShaderFiles(glslang::TWorklist& Worklist)
         glslang::TWorkItem* workItem;
         while (Worklist.remove(workItem)) {
             ShaderCompUnit compUnit(FindLanguage(workItem->name));
-            char* fileText = ReadFileData(workItem->name.c_str());
+            char* fileText = ReadUtf8FileData(workItem->name.c_str());
             if (fileText == nullptr)
                 usage();
             compUnit.addString(workItem->name, fileText);
@@ -1016,7 +1016,7 @@ void CompileAndLinkShaderFiles(glslang::TWorklist& Worklist)
             glslang::OS_DumpMemoryCounters();
     }
 
-    // free memory from ReadFileData, which got stored in a const char*
+    // free memory from ReadUtf8FileData, which got stored in a const char*
     // as the first string above
     for (auto it = compUnits.begin(); it != compUnits.end(); ++it)
         FreeFileData(const_cast<char*>(it->text[0]));
@@ -1181,7 +1181,7 @@ void CompileFile(const char* fileName, ShHandle compiler)
         std::string tempString(begin, end);
         shaderString = strdup(tempString.c_str());
     } else {
-        shaderString = ReadFileData(fileName);
+        shaderString = ReadUtf8FileData(fileName);
     }
 
     // move to length-based strings, rather than null-terminated strings
@@ -1374,8 +1374,9 @@ int fopen_s(
 
 //
 //   Malloc a string of sufficient size and read a string into it.
+//   If a UTF-8 BOM is found, it is discarded. No other processing is performed.
 //
-char* ReadFileData(const char* fileName)
+char* ReadUtf8FileData(const char* fileName)
 {
     FILE *in = nullptr;
     int errorCode = fopen_s(&in, fileName, "r");
@@ -1389,7 +1390,24 @@ char* ReadFileData(const char* fileName)
     fseek(in, 0, SEEK_SET);
 
     char* return_data = (char*)malloc(count + 1);  // freed in FreeFileData()
-    if ((int)fread(return_data, 1, count, in) != count) {
+    char* read_pos = return_data;
+    int remaining_count = count;
+
+    // trim BOM if found
+    const int bom_len = 3;
+    if (count >= bom_len) {
+        if ((int)fread(read_pos, 1, bom_len, in) != bom_len) {
+            free(return_data);
+            Error("can't read input file");
+        }
+        if (std::memcmp(read_pos, "\xef\xbb\xbf", bom_len) != 0) {
+            read_pos += bom_len;
+        }
+        remaining_count -= bom_len;
+    }
+
+    // read the rest of the file
+    if ((int)fread(read_pos, 1, remaining_count, in) != remaining_count) {
         free(return_data);
         Error("can't read input file");
     }
