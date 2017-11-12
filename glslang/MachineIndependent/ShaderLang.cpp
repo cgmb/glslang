@@ -232,7 +232,8 @@ bool InitializeSymbolTable(const TString& builtIns, int version, EProfile profil
     std::unique_ptr<TParseContextBase> parseContext(CreateParseContext(symbolTable, intermediate, version, profile, source,
                                                                        language, infoSink, spvVersion, true, EShMsgDefault,
                                                                        true));
-
+    if (parseContext == nullptr)
+        return false;
     TShader::ForbidIncluder includer;
     TPpContext ppContext(*parseContext, "", includer);
     TScanContext scanContext(*parseContext);
@@ -743,9 +744,9 @@ bool ProcessDeferred(
     const int numPre = 2;
     const int numPost = requireNonempty? 1 : 0;
     const int numTotal = numPre + numStrings + numPost;
-    size_t* lengths = new size_t[numTotal];
-    const char** strings = new const char*[numTotal];
-    const char** names = new const char*[numTotal];
+    std::unique_ptr<size_t[]> lengths(new size_t[numTotal]);
+    std::unique_ptr<const char*[]> strings(new const char*[numTotal]);
+    std::unique_ptr<const char*[]> names(new const char*[numTotal]);
     for (int s = 0; s < numStrings; ++s) {
         strings[s + numPre] = shaderStrings[s];
         if (inputLengths == nullptr || inputLengths[s] < 0)
@@ -775,9 +776,8 @@ bool ProcessDeferred(
     int version = 0;
     EProfile profile = ENoProfile;
     bool versionNotFirstToken = false;
-    bool versionNotFirst = (source == EShSourceHlsl)
-                                ? true
-                                : userInput.scanVersion(version, profile, versionNotFirstToken);
+    bool versionNotFirst = source == EShSourceHlsl ||
+        userInput.scanVersion(version, profile, versionNotFirstToken);
     bool versionNotFound = version == 0;
     if (forceDefaultVersionAndProfile && source == EShSourceGlsl) {
         if (! (messages & EShMsgSuppressWarnings) && ! versionNotFound &&
@@ -846,10 +846,11 @@ bool ProcessDeferred(
     // Now we can process the full shader under proper symbols and rules.
     //
 
-    TParseContextBase* parseContext = CreateParseContext(symbolTable, intermediate, version, profile, source,
-                                                         stage, compiler->infoSink,
-                                                         spvVersion, forwardCompatible, messages, false, sourceEntryPointName);
-
+    std::unique_ptr<TParseContextBase> parseContext(CreateParseContext(symbolTable, intermediate, version, profile, source,
+                                                    stage, compiler->infoSink,
+                                                    spvVersion, forwardCompatible, messages, false, sourceEntryPointName));
+    if (parseContext == nullptr)
+        return false;
     TPpContext ppContext(*parseContext, names[numPre] ? names[numPre] : "", includer);
 
     // only GLSL (bison triggered, really) needs an externally set scan context
@@ -885,7 +886,7 @@ bool ProcessDeferred(
         lengths[postIndex] = strlen(strings[numStrings + numPre]);
         names[postIndex] = nullptr;
     }
-    TInputScanner fullInput(numStrings + numPre + numPost, strings, lengths, names, numPre, numPost);
+    TInputScanner fullInput(numStrings + numPre + numPost, strings.get(), lengths.get(), names.get(), numPre, numPost);
 
     // Push a new symbol allocation scope that will get used for the shader's globals.
     symbolTable.push();
@@ -896,11 +897,6 @@ bool ProcessDeferred(
 
     // Clean up the symbol table. The AST is self-sufficient now.
     delete symbolTableMemory;
-
-    delete parseContext;
-    delete [] lengths;
-    delete [] strings;
-    delete [] names;
 
     return success;
 }
